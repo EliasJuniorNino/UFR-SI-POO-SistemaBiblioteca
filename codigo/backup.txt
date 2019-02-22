@@ -1,0 +1,125 @@
+public void carregarDados(){
+        Acervo cAcervo;
+        ArrayList<Estudante> cEstudantes = new ArrayList<>();
+        ArrayList<Relatorio> cRelatorios = new ArrayList<>();
+        ArrayList<Autor> cAutores = new ArrayList<>();
+        FileInputStream fin;
+        ObjectInputStream in;
+        Estudante estudante;
+        Relatorio relatorio;
+        Autor autor;
+        try {
+            fin = new FileInputStream("estudantes.bin");
+            in = new ObjectInputStream(fin);
+            while((estudante = (Estudante) in.readObject()) != null) {
+                cEstudantes.add(estudante);
+            }
+            in.close(); 
+            fin.close();
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("Um arquivo não foi encontrado");
+        } catch (IOException ex) {
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.estudantes = cEstudantes;
+        try {
+            fin = new FileInputStream("relatorios.bin");
+            in = new ObjectInputStream(fin);
+            while((relatorio = (Relatorio) in.readObject()) != null) {
+                cRelatorios.add(relatorio);
+            }
+            in.close(); 
+            fin.close();
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("Um arquivo não foi encontrado");
+        } catch (IOException ex) {
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.relatorios = cRelatorios;
+        try {
+            fin = new FileInputStream("autores.bin");
+            in = new ObjectInputStream(fin);
+            while((autor = (Autor) in.readObject()) != null) {
+                cAutores.add(autor);
+            }
+            in.close(); 
+            fin.close();
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("Um arquivo não foi encontrado");
+        } catch (IOException ex) {
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.autores = cAutores;
+        try {
+            fin = new FileInputStream("acervo.bin");
+            in = new ObjectInputStream(fin);
+            while((cAcervo = (Acervo) in.readObject()) != null) {
+                this.acervo = cAcervo;
+            }
+            in.close(); 
+            fin.close();
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("Um arquivo não foi encontrado");
+        } catch (IOException ex) {
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void salvarDados(){
+        FileOutputStream fout;
+        ObjectOutputStream out;
+        try {
+            fout = new FileOutputStream("estudantes.bin");
+            out = new ObjectOutputStream(fout);
+            for(Estudante i: this.estudantes)
+                out.writeObject(i);
+            out.close();
+            fout.close();   
+        }
+        catch(Exception e) {
+            System.out.println(e.toString());
+        } 
+        try{
+            fout = new FileOutputStream("relatorios.bin");
+            out = new ObjectOutputStream(fout);
+            for(Relatorio i: this.relatorios)
+                out.writeObject(i);
+            out.close();
+            fout.close(); 
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        try{
+            fout = new FileOutputStream("autores.bin");
+            out = new ObjectOutputStream(fout);
+            for(Autor i: this.autores)
+                out.writeObject(i);
+            out.close();
+            fout.close();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        } 
+        try{
+            fout = new FileOutputStream("acervo.bin");
+            out = new ObjectOutputStream(fout);
+            out.writeObject(this.acervo);
+            out.close();
+            fout.close(); 
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
