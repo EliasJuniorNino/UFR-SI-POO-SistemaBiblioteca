@@ -21,7 +21,8 @@ public class Biblioteca implements Serializable {
             String[] menu = {
                 "Sair", "Cadastrar livro", "Cadastrar aluno", "Emprestar livro",
                 "Devolver livro", "Relatório de Empréstimos", 
-                "Relatório de Livros por Área"
+                "Relatório de Livros por Área", "Listar livros", "Listar alunos",
+                "Listar areas"
             };
             UI.print("Menu", menu, true);
             opcao = Integer.parseInt(UI.getScanner().nextLine());
@@ -43,6 +44,15 @@ public class Biblioteca implements Serializable {
                     break;
                 case 6:
                     relatorioLivroPorArea();
+                    break;
+                case 7:
+                    listarLivros();
+                    break;
+                case 8:
+                    listarAlunos();
+                    break;
+                case 9:
+                    listarAreas();
                     break;
             }
         }while(opcao != 0);
@@ -237,5 +247,35 @@ public class Biblioteca implements Serializable {
                 }
             }
         }
+    }
+
+    private void listarLivros() {
+        if(this.livros.size() == 0){
+            System.out.println("\nNao a livro cadastrado");
+            return;
+        }
+        System.out.println("\nLivros");
+        for(Livro i : this.livros)
+            System.out.println(i.toString());
+    }
+
+    private void listarAlunos() {
+        if(this.estudantes.size() == 0){
+            System.out.println("\nNao a aluno cadastrado");
+            return;
+        }
+        System.out.println("\nAlunos");
+        for(Estudante i : this.estudantes)
+            System.out.println(i.toString());
+    }
+
+    private void listarAreas() {
+        if(this.areas.size() == 0){
+            System.out.println("\nNao a area cadastrada");
+            return;
+        }
+        System.out.println("\nAreas");
+        for(Area i : this.areas)
+            System.out.println(i.toString());
     }
 }
