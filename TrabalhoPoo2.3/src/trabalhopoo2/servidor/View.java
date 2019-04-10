@@ -19,6 +19,7 @@ public class View {
         System.out.println("4 - Inserir Livro");
         System.out.println("5 - Listar Livro");
         System.out.println("6 - Remover Livro");
+        System.out.println("7 - Salvar relatorio em JSON");
         System.out.println("0 - Sair");
     }
     

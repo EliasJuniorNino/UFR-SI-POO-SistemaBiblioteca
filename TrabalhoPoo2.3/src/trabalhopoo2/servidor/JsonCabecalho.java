@@ -30,7 +30,8 @@ public class JsonCabecalho<T> {
         return null;
     }
     
-    public String toJson(){
+    @Override
+    public String toString(){
         String str = "";
         for(int i = 0; i < this.indices.size(); i++){
             str += "\"" + this.indices.get(i) + "\": ";

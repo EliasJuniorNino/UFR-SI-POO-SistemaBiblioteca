@@ -1,6 +1,8 @@
 package trabalhopoo2.servidor;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller {
     
@@ -61,6 +63,15 @@ public class Controller {
                     System.out.print("Digite um id: ");
                     int idlivro = readOption();
                     md.getLivros().excuir(idlivro);
+                    break;
+                case 7:
+                    MyArrayList<Livro> livros = Model.getInstance().getLivros();
+                    String json = "[ {  } ]";
+                    try {
+                        DAO.getInstance().gravarArquivo(json, "saida.json");
+                    } catch (ArquivoException ex) {
+                        System.out.println(ex.getMessage());
+                    }
                     break;
             }
         }while(op != 0);

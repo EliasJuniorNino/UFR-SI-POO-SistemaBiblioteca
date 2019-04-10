@@ -23,8 +23,8 @@ public class Model {
     public void carregar(){
         DAO d = DAO.getInstance();
         try {
-            this.alunos = d.lerArquivo("_alunos.json");
-            this.livros = d.lerArquivo("_livros.json");
+            this.alunos = d.lerArquivo("alunos.bin");
+            this.livros = d.lerArquivo("livros.bin");
         } catch (ArquivoException ex) {
             System.out.println(ex.getMessage());
         }
@@ -33,8 +33,8 @@ public class Model {
     public void salvar(){
         DAO d = DAO.getInstance();
         try {
-            d.gravarArquivo(this.alunos, "_alunos.json");
-            d.gravarArquivo(this.alunos, "_livros.json");
+            d.gravarArquivo(this.alunos, "alunos.bin");
+            d.gravarArquivo(this.livros, "livros.bin");
         } catch (ArquivoException ex) {
             System.out.println(ex.getMessage());
         }

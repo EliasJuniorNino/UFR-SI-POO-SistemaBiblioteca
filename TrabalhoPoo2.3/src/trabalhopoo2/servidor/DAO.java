@@ -54,4 +54,21 @@ public class DAO<T> {
             );
         }
     }
+    
+    public void gravarArquivo(String data, String url)
+            throws ArquivoException 
+    {
+        try {
+            FileOutputStream fout = new FileOutputStream(url);
+            ObjectOutputStream out = new ObjectOutputStream(fout);
+            out.write(data.getBytes());
+            out.close();
+            fout.close();   
+        }
+        catch(Exception e) {
+            throw new ArquivoException(
+                "Erro ao salvar dados: " + e.getMessage()
+            );
+        }
+    }
 }

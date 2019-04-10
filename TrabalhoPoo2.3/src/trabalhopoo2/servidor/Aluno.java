@@ -98,6 +98,6 @@ public class Aluno implements Serializable{
                 .set("nome", this.nome)
                 .set("datanascimento", this.dataNascimento)
                 .set("cpf", this.cpf)
-                .toJson();
+                .toString();
     }
 }

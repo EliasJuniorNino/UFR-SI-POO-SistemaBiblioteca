@@ -93,6 +93,6 @@ public class Livro implements Serializable{
                 .set("nome", this.nome)
                 .set("area", this.area)
                 .set("editora", this.editora)
-                .toJson();
+                .toString();
     }
 }
