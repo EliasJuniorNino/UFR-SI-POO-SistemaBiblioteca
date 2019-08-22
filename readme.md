@@ -1,6 +1,6 @@
-# Sistema para Biblioteca 
-## Aluno: Elias Junior
-## Proposta
+# Programação Orientada a Objetos
+## Sistema para Biblioteca 
+### Proposta
 - Cadastro de Livros 
 - Cadastro de Alunos  
 - Cadastro Àreas dos Livros 
